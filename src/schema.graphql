@@ -1,0 +1,17 @@
+# import Post from "./generated/prisma.graphql"
+# import Question from "./generated/prisma.graphql"
+# import Option from "./generated/prisma.graphql"
+# import Response from "./generated/prisma.graphql"
+
+input OptionInput {
+  value: String!
+}
+
+type Query {
+  questions(id: ID): [Question]!
+}
+
+type Mutation {
+  createQuestion(title: String!, type: String!, options: [OptionInput!]!): Question
+  createResponse(questionId: String!): Response
+}

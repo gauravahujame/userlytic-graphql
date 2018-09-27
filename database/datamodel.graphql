@@ -1,0 +1,24 @@
+type Post {
+  id: ID! @unique
+  isPublished: Boolean! @default(value: false)
+  title: String!
+  text: String!
+}
+
+type Question {
+  id: ID! @unique
+  title: String!
+  type: String!
+  options: [Option!]!
+}
+
+type Option {
+  id: ID! @unique
+  value: String!
+}
+
+type Response {
+  id: ID! @unique
+  question: Question @relation(name: "AnsweredQuestion")
+  answer: Option @relation(name: "SelectedOption")
+}
